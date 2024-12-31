@@ -20,6 +20,7 @@ function getRandomColor() {
 async function initializeModel() {
   const model_id = "onnx-community/paligemma2-3b-pt-224"; // Change this to use a different PaliGemma model
     resultDiv.innerHTML = "Loading model and processor...";
+    console.error("Loading model and processor:", error);
   try{
     processor = await AutoProcessor.from_pretrained(model_id);
     model = await PaliGemmaForConditionalGeneration.from_pretrained(
@@ -33,6 +34,7 @@ async function initializeModel() {
       }
     );
     resultDiv.innerHTML = "Model and processor loaded successfully!";
+    console.error("Model loaded successfully", error);
     runButton.disabled = false;
 
   } catch (error) {
